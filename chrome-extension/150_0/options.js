@@ -22,6 +22,14 @@ var categories = {
             'desc': text.get('option_use_dark_icon_desc')
         }]
     }, 
+	'encryption': {
+        'label': 'Encryption',
+        'options': [{
+            'key': 'enableEncrpyption',
+            'label': 'Enable encryption',
+            'desc': 'Enable experimental AES encryption for notification mirroring on Android devices (requires PushBullet Android app extension)'
+        }]
+    }, 
     'notifications': {
         'label': text.get('notifications'),
         'options': [{
@@ -233,6 +241,34 @@ var setUpOptions = function() {
         })();
     }
 
+	var encryptionOptions = document.getElementById('tab-encryption-options');
+	
+	var encKey = document.createElement('div');
+    encKey.className = 'option option-desc';
+	
+	var encKeyLabel = document.createElement('span');
+    encKeyLabel.className = 'option-label';
+    encKeyLabel.style.display = 'inline';
+    encKeyLabel.textContent = 'Encryption key';
+	
+	var encKeyInput = document.createElement('input');
+	encKeyInput.type = "password";
+    encKeyInput.style.marginLeft = '6px';
+	
+	if (localStorage.encKey) {
+        encKeyInput.value = localStorage.encKey;
+    }
+	
+	encKeyInput.oninput = function() {
+        localStorage.encKey = encKeyInput.value;
+        optionsChanged();
+    };
+	
+	encKey.appendChild(encKeyLabel);
+    encKey.appendChild(encKeyInput);
+	
+	encryptionOptions.appendChild(encKey);
+	
     var notificationsOptions = document.getElementById('tab-notifications-options');
 
     var duration = document.createElement('div');

@@ -99,6 +99,27 @@ var mirrorNotification = function(push) {
 
     if (push.package_name == 'com.pushbullet.android') {
         options.title = '';
+	} else if (push.package_name == 'de.yyco.silencer' && localStorage.enableEncrpyption) {	
+		try {
+			console.log("Encrypted: " + push.body);
+
+			var decrypted = utils.decrypt(push.body, localStorage.encKey, push.title);
+			var decryptedData = JSON.parse(decrypted);
+		
+			push.package_name = decryptedData.p;
+			push.application_name = decryptedData.l;
+			push.title = decryptedData.t;
+			push.body = decryptedData.b;
+			push.notification_id = decryptedData.n;
+			
+			options.title = push.application_name + ': ';
+		}
+		catch (e) {
+			options.title = "Silencer: ";
+			push.title = "Decryption error";
+			push.body = "Ensure encryption key is correct";
+			push.icon = "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";
+		}
     } else {
         options.title = push.application_name + ': ';
     }
