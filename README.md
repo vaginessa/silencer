@@ -14,6 +14,8 @@ Download the [signed APK](https://github.com/hauckwill/silencer/raw/master/andro
 Once the above steps are completed, setup can be verified by sending a notification to your device. It will be mirrored to Chrome and appear exactly the same as it would without Silencer, including dismiss support. On the Chrome extensions page with developer mode enabled, click the "Inspect views" button under PushBullet. In the window that appears, click console. In the console, there will be messages that begin with "Encrypted" followed by an encrypted string. This string contains notification data that would normally be sent in plain text.
 
 #Notes
+Responding to notifications and enabling/disabling specific apps is NOT YET SUPPORTED.
+
 This is *very* experimental and may not work as intended, or at all. It was created solely as a challenge, but has been released because of demand. It was put together quickly, so expect some bugs.
 
 To the PushBullet team: if you want this removed, let me know.
