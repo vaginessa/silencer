@@ -10,6 +10,9 @@ Download the [Chrome extension](https://github.com/hauckwill/silencer/raw/master
 ## Android Application
 Download the [signed APK](https://github.com/hauckwill/silencer/raw/master/android-application/app-release.apk) or compile one from source, then follow the setup instructions on your device.
 
+##Verifying Setup
+Once the above steps are completed, setup can be verified by sending a notification to your device. It will be mirrored to Chrome and appear exactly the same as it would without silencer, including dismiss support. On the Chrome extensions page with developer mode enabled, click the "Inspect views" button under PushBullet. In the window that appears, click console. In the console, there will be messages that begin with "Encrypted" followed by an encrypted string. This string contains notification data that would normally be sent in plain text.
+
 #Notes
 This is *very* experimental and may not work as intended, or at all. It was created solely as a challenge, but has been released because of demand. It was put together quickly, so expect some bugs.
 
